@@ -13,9 +13,9 @@ class Solution:
             return []
         checked = {}
         for i, num in enumerate(nums):
-            paired = target - num
-            if paired in checked:
-                return [checked[paired], i]
+            complement = target - num
+            if complement in checked:
+                return [checked[complement], i]
             checked[num] = i
         return []
 
