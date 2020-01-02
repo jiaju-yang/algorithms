@@ -55,14 +55,26 @@ class Solution:
         if nums[right] > nums[left]:
             return nums[left]
 
-        target = 0
-        while nums[target] < nums[target + 1]:
-            target = (left + right) >> 1
-            if nums[target] < nums[0]:
-                right = target
+        # target = 0
+        # while nums[target] < nums[target + 1]:
+        #     target = (left + right) >> 1
+        #     if nums[target] < nums[0]:
+        #         right = target
+        #     else:
+        #         left = target
+        # return nums[target + 1]
+
+        # 这个方法更好思考一些，主要是不会越界
+        while left < right:
+            mid = (left + right) >> 1
+            if nums[mid] > nums[mid + 1]:
+                return nums[mid + 1]
+            if nums[mid - 1] > nums[mid]:
+                return nums[mid]
+            if nums[mid] > nums[0]:
+                left = mid + 1
             else:
-                left = target
-        return nums[target + 1]
+                right = mid - 1
 
 
 # @lc code=end
